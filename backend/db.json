@@ -1,22 +1,32 @@
 {
   "pensamentos": [
     {
-      "id": 2,
-      "conteudo": "Que ótimo que você veio.",
-      "autoria": "devmaster",
-      "modelo": "modelo1"
-    },
-    {
-      "id": 3,
-      "conteudo": "Que mais ou menos que você veio.",
-      "autoria": "Nay",
-      "modelo": "modelo3"
-    },
-    {
-      "conteudo": "Aprendendo Angular",
-      "autoria": "Dev",
+      "conteudo": "pensamento 1",
+      "autoria": "eu mesmo",
       "modelo": "modelo1",
-      "id": 6
+      "favorito": false,
+      "id": 1
+    },
+    {
+      "conteudo": "pensamento 3",
+      "autoria": "eu mesmo",
+      "modelo": "modelo1",
+      "favorito": true,
+      "id": 3
+    },
+    {
+      "conteudo": "pensamento 4",
+      "autoria": "eu mesmo",
+      "modelo": "modelo1",
+      "favorito": true,
+      "id": 4
+    },
+    {
+      "conteudo": "pensamento 5",
+      "autoria": "eu mesmo",
+      "modelo": "modelo1",
+      "favorito": true,
+      "id": 5
     }
   ]
 }

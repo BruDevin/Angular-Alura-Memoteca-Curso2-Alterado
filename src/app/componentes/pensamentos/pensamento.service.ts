@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Pensamento } from './pensamento';
 
 @Injectable({
@@ -11,8 +11,36 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) { }
 
-  listar() {
+  listar(pagina: number, filtro: string, favorito?: boolean) {
+
+    const itensPorPagina = 2;
+
+    let params = new HttpParams()
+      .set("_page", pagina)
+      .set("_limit", itensPorPagina);
+
+    if (filtro.trim().length > 2) {
+      params = params
+        .set("q", filtro)
+    }
+
+    if (favorito) {
+      params = params
+        .set("favorito", true)
+    }
+
+    // return this.http.get<Pensamento[]>(`${this.API}?_page=${pagina}&_limit=2`)
+    return this.http.get<Pensamento[]>(this.API, { params })
+
+  }
+
+  listarTodos() {
     return this.http.get<Pensamento[]>(this.API)
+  }
+
+  listarFavoritos() {
+    let params = new HttpParams().set("favorito", true)
+    return this.http.get<Pensamento[]>(this.API, { params })
   }
 
   criar(pensamento: Pensamento) {
@@ -32,6 +60,11 @@ export class PensamentoService {
   buscarPorId(id: number) {
     const url = `${this.API}/${id}`
     return this.http.get<Pensamento>(url)
+  }
+
+  mudarFavorito(pensamento: Pensamento) {
+    pensamento.favorito = !pensamento.favorito
+    return this.editar(pensamento)
   }
 
 }
